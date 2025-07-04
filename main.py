@@ -30,7 +30,7 @@ def main():
             st.pyplot(fig)
         
             with col2:
-                derivative = get_derivative(ex)
+                derivative = get_derivative(expr)
                 st.markdown("### 🧮 Derivative")
                 st.latex(f"f'(x) = {latexify(derivative)}")
             
