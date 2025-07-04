@@ -2,16 +2,12 @@ import streamlit as st
 from sympy import symbols, sympify
 from src.plotter import plot_function
 from src.analyzer import get_derivative, latexify, lambdify_expr
-
+# from src.exporter import export_pdf
 
 def main():
     
-    # Set page configuration
-    # st.set_page_config(
-    #     page_title="Function Plotter",
-    #     page_icon="📈",
-    # )
-    
+    st.sidebar.title("Function Plotter")
+    st.sidebar.markdown("This app allows you to plot mathematical functions and visualize their derivatives.")
     # Load custom CSS
     with open("assets/custom.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -33,12 +29,12 @@ def main():
             fig = plot_function(f_lambdified, user_input)
             st.markdown("### 📊 Graph of f(x)")
             st.pyplot(fig)
-
+        
             with col2:
                 derivative = get_derivative(expr)
                 st.markdown("### 🧮 Derivative")
                 st.latex(f"f'(x) = {latexify(derivative)}")
-
+            
         except Exception as e:
             st.error("⚠️ Invalid function. Try something like `x**2`, `sin(x)`, or `1/x`.")
 
