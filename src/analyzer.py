@@ -1,4 +1,3 @@
-# src/analyzer.py
 import sympy as sp
 
 x = sp.symbols('x')
